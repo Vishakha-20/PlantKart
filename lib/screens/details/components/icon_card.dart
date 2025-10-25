@@ -5,9 +5,9 @@ import '../../../constants.dart';
 
 class IconCard extends StatelessWidget {
   const IconCard({
-    Key key,
-    this.icon,
-  }) : super(key: key);
+    super.key,
+    required this.icon,
+  });
 
   final String icon;
 
@@ -24,11 +24,11 @@ class IconCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(6),
         boxShadow: [
           BoxShadow(
-            offset: Offset(0, 15),
+            offset: const Offset(0, 15),
             blurRadius: 22,
             color: kPrimaryColor.withOpacity(0.22),
           ),
-          BoxShadow(
+          const BoxShadow(
             offset: Offset(-15, -15),
             blurRadius: 20,
             color: Colors.white,

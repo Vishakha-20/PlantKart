@@ -4,13 +4,14 @@ import '../../../constants.dart';
 
 class TitleAndPrice extends StatelessWidget {
   const TitleAndPrice({
-    Key key,
-    this.title,
-    this.country,
-    this.price,
-  }) : super(key: key);
+    super.key,
+    required this.title,
+    required this.country,
+    required this.price,
+  });
 
-  final String title, country;
+  final String title;
+  final String country;
   final int price;
 
   @override
@@ -24,14 +25,14 @@ class TitleAndPrice extends StatelessWidget {
               children: [
                 TextSpan(
                   text: "$title\n",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline4
-                      .copyWith(color: kTextColor, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                        color: kTextColor,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
                 TextSpan(
                   text: country,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     color: kPrimaryColor,
                     fontWeight: FontWeight.w300,
@@ -40,13 +41,12 @@ class TitleAndPrice extends StatelessWidget {
               ],
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Text(
             "\$$price",
-            style: Theme.of(context)
-                .textTheme
-                .headline5
-                .copyWith(color: kPrimaryColor),
+            style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                  color: kPrimaryColor,
+                ),
           )
         ],
       ),

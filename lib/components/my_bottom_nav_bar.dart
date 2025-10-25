@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../constants.dart';
 
 class MyBottomNavBar extends StatelessWidget {
-  const MyBottomNavBar({
-    Key key,
-  }) : super(key: key);
+  const MyBottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +18,7 @@ class MyBottomNavBar extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            offset: Offset(0, -10),
+            offset: const Offset(0, -10),
             blurRadius: 35,
             color: kPrimaryColor.withOpacity(0.38),
           ),

@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/screens/details/details_screen.dart';
-
 import '../../../constants.dart';
 
 class RecomendsPlants extends StatelessWidget {
-  const RecomendsPlants({
-    Key key,
-  }) : super(key: key);
+  const RecomendsPlants({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: <Widget>[
+        children: [
           RecomendPlantCard(
             image: "assets/images/image_1.png",
             title: "Samantha",
@@ -23,7 +20,7 @@ class RecomendsPlants extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailsScreen(),
+                  builder: (context) => const DetailsScreen(),
                 ),
               );
             },
@@ -37,7 +34,7 @@ class RecomendsPlants extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailsScreen(),
+                  builder: (context) => const DetailsScreen(),
                 ),
               );
             },
@@ -57,78 +54,83 @@ class RecomendsPlants extends StatelessWidget {
 
 class RecomendPlantCard extends StatelessWidget {
   const RecomendPlantCard({
-    Key key,
-    this.image,
-    this.title,
-    this.country,
-    this.price,
-    this.press,
-  }) : super(key: key);
+    super.key,
+    required this.image,
+    required this.title,
+    required this.country,
+    required this.price,
+    required this.press,
+  });
 
-  final String image, title, country;
+  final String image;
+  final String title;
+  final String country;
   final int price;
-  final Function press;
+  final VoidCallback press;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final TextStyle defaultTextStyle =
+        Theme.of(context).textTheme.bodyMedium!; // default for RichText
+
     return Container(
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
         left: kDefaultPadding,
         top: kDefaultPadding / 2,
         bottom: kDefaultPadding * 2.5,
       ),
       width: size.width * 0.4,
       child: Column(
-        children: <Widget>[
+        children: [
           Image.asset(image),
           GestureDetector(
             onTap: press,
             child: Container(
-              padding: EdgeInsets.all(kDefaultPadding / 2),
+              padding: const EdgeInsets.all(kDefaultPadding / 2),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(10),
                   bottomRight: Radius.circular(10),
                 ),
                 boxShadow: [
                   BoxShadow(
-                    offset: Offset(0, 10),
+                    offset: const Offset(0, 10),
                     blurRadius: 50,
                     color: kPrimaryColor.withOpacity(0.23),
                   ),
                 ],
               ),
               child: Row(
-                children: <Widget>[
+                children: [
                   RichText(
                     text: TextSpan(
+                      style: defaultTextStyle,
                       children: [
                         TextSpan(
-                            text: "$title\n".toUpperCase(),
-                            style: Theme.of(context).textTheme.button),
+                          text: "$title\n".toUpperCase(),
+                          style: defaultTextStyle.copyWith(
+                              color: kTextColor, fontWeight: FontWeight.bold),
+                        ),
                         TextSpan(
-                          text: "$country".toUpperCase(),
-                          style: TextStyle(
+                          text: country.toUpperCase(),
+                          style: defaultTextStyle.copyWith(
                             color: kPrimaryColor.withOpacity(0.5),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     '\$$price',
-                    style: Theme.of(context)
-                        .textTheme
-                        .button
-                        .copyWith(color: kPrimaryColor),
-                  )
+                    style: defaultTextStyle.copyWith(color: kPrimaryColor),
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
