@@ -24,15 +24,13 @@
 ## Screenshots
 
 **Home Page:**  
-![Home Page](path_to_your_home_page_screenshot.png)
+![Home Page](./Screenshots/plant_homepage.png)
 
 **Details Page:**  
-![Details Page](path_to_your_details_page_screenshot.png)
+![Home Page](./Screenshots/plant_homepage2.png)
 
 **Cart / Add to Cart:**  
-![Cart Page](path_to_your_cart_page_screenshot.png)
-
-*(Replace `path_to_your_screenshot.png` with your actual screenshot paths.)*
+![Cart Page](./Screenshots/plant_cart.png)
 
 ---
 
